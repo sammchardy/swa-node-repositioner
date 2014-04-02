@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='/javascripts/zepto.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='/javascripts/default.js'></script>
+  </head>
+  <body>
+  <form method="post" action="/submit">
+    <h2>Left Motor</h2>
+    <input type="hidden" name="motor" value="1" />
+    <input type="text" name="distance" />
+    <input type="submit" />
+  </form>
+  <form method="post" action="/submit">
+    <h2>Right Motor</h2>
+    <input type="hidden" name="motor" value="2" />
+    <input type="text" name="distance" />
+    <input type="submit" />
+  </form>
+
+  <p>- clockwise<br />+ anti-clockwise</p>
+
+  <form method="post" action="/reset">
+    <input type="submit" value="Reset" />
+  </form>
+
+
+    <% for(var i = 0; i < 9; i++) {%>
+  <form method="post" action="/position">
+    <input type="submit" name="<%= i %>" value="<%= i %>" />
+    <input type="hidden" name="position" value="<%= i %>" />
+  </form>
+  <% } %>
+
+  </body>
+</html>
